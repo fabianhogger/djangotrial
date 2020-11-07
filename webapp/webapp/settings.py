@@ -121,12 +121,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
-os.path.join(BASE_DIR,'travelstuff/static'),
-os.path.join(BASE_DIR,'static/css'),
-os.path.join(BASE_DIR,'static/images'),
-os.path.join(BASE_DIR,'static/php'),
-os.path.join(BASE_DIR,'static/fonts'),
-
+    os.path.join(BASE_DIR,'travelstuff/static')
 
 ]
 STATIC_ROOT=os.path.join(BASE_DIR,'assets')
