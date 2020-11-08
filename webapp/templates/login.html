@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  <title> Login</title>
+  <meta name= 'viewport' content='width= device-width ,initial-scale=1'>
+</head>
+<body>
+  <form action='login' method='post'>
+    {% csrf_token %}
+    Enter email:<input type='text' name='username'  placeholder='username'><br>
+    Enter Password:<input type='text' name='Password'  placeholder='Password'><br>
+
+  <input type='submit'>
+<div>
+  {%for message in messages%}
+  <h3>{{message}}</h3>
+  {% endfor %}
+</div>
+  </form>
+</body>
+</html>
