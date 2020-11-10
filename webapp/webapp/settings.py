@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'news.apps.NewsConfig',
     'travelstuff.apps.TravelstuffConfig',
     'django.contrib.admin',
     'django.contrib.auth',
