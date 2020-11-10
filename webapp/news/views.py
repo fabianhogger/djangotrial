@@ -18,14 +18,15 @@ def scrape(request):
         main=article.find_all('a')[0]
         title=article.find_all('h4')[0]
         link=main['href']
-        image_src=str(main.find('img')['srcset']).split(" ")[-4]
+        image_src=str(main.find('img')['srcset']).split("w,")[0]
         print('title: ' ,title.text)
         print('link: ' ,link)
         print('image_src: ' ,image_src)
+        titlet=str(title.text)
         if link is not None and image_src is not None and title is not None:
-            new_headline=Headline(title=title.text,image=image_src,url=link)
+            new_headline=Headline(title=titlet,image=image_src,url=link)
             new_headline.save()
-    return redirect('../')
+        return redirect('../')
 
 def news_list(request):
     print("news_list called")
