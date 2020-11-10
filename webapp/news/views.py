@@ -14,11 +14,11 @@ def scrape(request):
     for article in News:
         print('entered loop')
         main=article.find_all('a')[0]
-        titles=article.find_all('h4')
+        titles=article.find_all('h4')[0]
         link=main['href']
         #image_src=str(main.find('imgr')['srcset']).split(" ")[-4]
         #title=main['title']
-        print('title: ' ,titles)
+        print('title: ' ,titles.text)
         print('link: ' ,link)
         #new_headline=Headline()
         #new_headline.title=title
