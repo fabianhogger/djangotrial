@@ -20,11 +20,13 @@ def scrape(request):
         if images is not None:
             if images.has_attr('srcset'):
                 #print(images)
-                image_src=str(main.find('img')['srcset']).split("w,")[0]
+                image_src=str(main.find('img')['srcset']).split(".jpg")[0]
                 print('title: ' ,title.text)
                 print('link: ' ,link)
-                print('image_src: ' ,image_src)
+
                 titlet=str(title.text)
+                image_src=image_src+'.jpg'
+                print('image_src: ' ,image_src)
                 if link is not None and image_src is not None and title is not None:
                     new_headline=Headline(title=titlet,image=image_src,url=link)
                     new_headline.save()
