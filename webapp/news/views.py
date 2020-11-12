@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup as BSoup
 from news.models import Headline
 from django.http import HttpResponse
-
+import re
 # Create your views here.
 def scrape(request):
     session=requests.Session()
@@ -31,6 +31,37 @@ def scrape(request):
                     new_headline=Headline(title=titlet,image=image_src,url=link)
                     new_headline.save()
     return redirect('news')
+
+def scrape_article(request):
+    if request.method== 'POST':
+        url=request.POST['URL']
+        session=requests.Session()
+        session.headers={"User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)"}
+        content=session.get(url,verify=True).content
+        soup=BSoup(content,"html.parser")
+        article=soup.find('meta',{"name":"description"})['content']
+        title=soup.title.string
+        images=soup.find('img')
+        print("IMAGES ",images)
+        print('                                 ')
+        print('                                 ')
+        print('                                 ')
+
+        if images is not None:
+            if images.has_attr('data-srcset'):
+                txt=str(soup.find('img')['data-srcset'])
+                img_list=re.search("https(.+)jpg$", txt)
+                print('image link: ',img_list)
+        print('                                 ')
+        print('                                 ')
+        print('                                 ')
+
+        print('article',article)
+        print('title',title)
+
+    return redirect("news")
+    #new_article=Article(title=title,image=title,url=url)
+
 
 def news_list(request):
     print("news_list called")
