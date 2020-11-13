@@ -50,7 +50,8 @@ def scrape_article(request):
         if images is not None:
             if images.has_attr('data-srcset'):
                 txt=str(soup.find('img')['data-srcset'])
-                img_list=re.search("https(.+)jpg$", txt)
+                img_list=re.findall("(?<=https).*?(?=jpg)",txt)
+                img_list='https'+img_list[1]+'jpg'
                 print('image link: ',img_list)
         print('                                 ')
         print('                                 ')
