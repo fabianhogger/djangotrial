@@ -23,3 +23,12 @@ history_dict=history.history
 acc=history_dict['accuracy']
 val_acc=history_dict['val_acc']
 epochs=range(1,len(acc)+1)
+
+plt.figure(figsize=(12,9))
+plt.plot(epochs,acc,'bo',label='Training acc')
+plt.plot(epochs,acc,'b',label='validation acc')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend(loc='lower_right')
+plt.ylim((0.5,1))
+plt.show()
