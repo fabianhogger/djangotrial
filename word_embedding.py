@@ -22,7 +22,7 @@ def get_model():
     model=keras.Sequential([layers.Embedding(encoder.vocab_size,embedding_dim),layers.GlobalAveragePooling1D(),layers.Dense(1,activation='sigmoid')])
     model.compile(optimizer='adam',loss='binary_crossentropy',metrics=['accuracy'])
     return model
-def plot_data(history):
+def plot_history(history):
      history_dict=history.history
      acc=history_dict['accuracy']
      val_acc=history_dict['val_accuracy']
@@ -37,10 +37,17 @@ def plot_data(history):
      plt.show()
 
 def retrieve_embeddings(model,encoder):
-
-
+    out_vectors=io.open('vecs.tsv','w',encoding='utf-8')
+    out_metadata=io.open('meta.tsv','w',encoding='utf-8')
+    weights=model.layers[0].get_weights()[0]
+    for num,word in enumerate(encoder.subwords):
+        vec=weights[num+1]
+        out_metadata=write(word+'\n')
+        out_vectors=write('\t'.join([str(x) for x in vec])+'\n')
+        out_vectors.close()
+        out_metadata.close()
 
 train_batches,test_batches,encoder=get_batch_data()
 model=get_model(encoder)
 history=model.fit(train_batches,epochs=10,validation_data=test_batches,validation_steps=20)
-plot_data(history)
+plot_history(history)
