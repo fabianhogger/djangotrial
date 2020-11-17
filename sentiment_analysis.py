@@ -2,7 +2,7 @@ import tensorflow_datasets as tfds
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
-tfds.disable_progress_bar()
+
 def plot_graphs(history, metric):
     plt.plot(history.history[metric])
     plt.plot(history.history['val_'+metric],'')
@@ -16,35 +16,55 @@ train_data,test_data=dataset['train'],dataset['test']
 for example, label in train_data.take(1):
   print('text: ', example.numpy())
   print('label: ', label.numpy())
-"""
 
-encoder=info.features['text'].encoder
-BUFFER_SIZE=10000
-BATCH_SIZE=64
-padded_shapes=([None],())
-train_data=train_data.shuffle(BUFFER_SIZE).padded_batch(BATCH_SIZE,padded_shapes=padded_shapes)
-test_data=test_data.shuffle(BUFFER_SIZE).padded_batch(BATCH_SIZE,padded_shapes=padded_shapes)
-model=tf.keras.Sequential([tf.keras.layers.Embedding(encoder.vocab_size,64),tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64)),tf.keras.layers.Dense(64,activation='relu'),tf.keras.layers.Dense(1,activation='sigmoid')])
-model.compile(loss='binary_crossentropy',optimizer=tf.keras.optimizers.Adam(1e-4),metrics=['accuracy'])
-history=model.fit(train_data,epochs=5,validation_data=test_data,validation_steps=30)
+BUFFER_SIZE = 10000
+BATCH_SIZE = 32
+
+train_dataset = train_data.shuffle(BUFFER_SIZE).batch(BATCH_SIZE).prefetch(tf.data.experimental.AUTOTUNE)
+test_dataset = test_data.batch(BATCH_SIZE).prefetch(tf.data.experimental.AUTOTUNE)
+for example, label in train_dataset.take(1):
+  print('texts: ', example.numpy()[:3])
+  print()
+  print('labels: ', label.numpy()[:3])
+#CREATE ENCODER
+VOCAB_SIZE=1000
+encoder=tf.keras.layers.experimental.preprocessing.TextVectorization(max_tokens=VOCAB_SIZE)
+encoder.adapt(train_dataset.map(lambda text,label: text))
+vocab=np.array(encoder.get_vocabulary())
+print(vocab[:20])
+
+model=tf.keras.Sequential([encoder,tf.keras.layers.Embedding(input_dim=len(encoder.get_vocabulary()),output_dim=64,mask_zero=True),tf.keras.layers.Bidirectional(tf.keras.layers.LSTM(64)),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(1)
+])
+print([layer.supports_masking for layer in model.layers])
 
 
-def pad_to_size(size,vec):
-    zeros=[0]*(size-len(vec))
-    vec.extend(zeros)
-    return vec
+sample_text = ('The movie was cool. The animation and the graphics '
+               'were out of this world. I would recommend this movie.')
+predictions = model.predict(np.array([sample_text]))
+print(predictions[0])
+padding = "the " * 2000
+predictions = model.predict(np.array([sample_text, padding]))
+print(predictions[0])
 
-def sample_predict(sentence,pad):
-    encoded_sample_pred_text=encoder.encode(sentence)
-    if pad:
-        encoded_sample_pred_text=pad(encoded_sample_pred_text,64)
-        encoded_sample_pred_text=tf.cast(encoded_sample_pred_text,tf.float32)
-        predictions=model.predict(tf.expand_dims(encoded_sample_pred_text,0))
-sample_text='this movie was awsome.The acting was incredible.Highly recommend it'
-predictions=sample_predict(sample_text,pad=True)*100
-print("probability this is a positive review: %.2f" % predictions)
-sample_text='this movie was so so.The acting was mediocre.kind of recommend it'
+padding = "the " * 2000
+predictions = model.predict(np.array([sample_text, padding]))
+print(predictions[0])
+model.compile(loss=tf.keras.losses.BinaryCrossentropy(from_logits=True),
+              optimizer=tf.keras.optimizers.Adam(1e-4),
+              metrics=['accuracy'])
+history = model.fit(train_dataset, epochs=10,
+                    validation_data=test_dataset,
+                    validation_steps=30)
+test_loss, test_acc = model.evaluate(test_dataset)
 
-predictions=sample_predict(sample_text,pad=True)*100
-print("probability this is a me  review: %.2f" % predictions)
-"""
+print('Test Loss: {}'.format(test_loss))
+print('Test Accuracy: {}'.format(test_acc))
+plt.figure(figsize=(16,8))
+plt.subplot(1,2,1)
+plot_graphs(history, 'accuracy')
+plt.ylim(None,1)
+plt.subplot(1,2,2)
+plot_graphs(history, 'loss')
+plt.ylim(0,None)
