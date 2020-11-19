@@ -1,0 +1,39 @@
+NEWS SITES APIS
+Nexis Solutions ,Webit,Robust Foundation API ,Article Search new york times,msnbc entities api& documents apis
+BBC Platform api
+
+SENTIMENT ANALYSIS PAPERS
+
+[Pang, B., & Lee, L. (2008). Opinion Mining and Sentiment Analysis.
+ Foundations and Trends® in Information Retrieval, 2(1–2), 1–135. doi:10.1561/1500000011]
+url:https://sci-hub.se/10.1561/1500000011
+
+Notes
+  "One set of problems share the following general character:
+  given an opinionated piece of text, wherein it is assumed that the overall opin-ion in it is about one single issue or item,
+  classify the opinion as falling under one of two opposing sentiment polarities,
+  or locate its position on the continuum between these two polarities. "
+  "sentiment polarity classification or polarity classification"
+
+27  M. Bansal, C. Cardie, and L. Lee,
+  “The power of negative thinking: Exploiting label disagreement in the min-cut classification framework”
+294   M. Thomas, B. Pang, and L. Lee,
+    “Get out the vote: Determining support oropposition from congressional floor-debate transcripts,”
+112   G.  Grefenstette,  Y.  Qu,  J.  G.  Shanahan,  and  D.  A.  Evans,
+   “Coupling niche  browsers  and  affect  analysis  for  an  opinion  mining  application,”.
+
+  [27, 294] papers that might be useful  a political speech is in support of or opposition to the issue under debate
+  "Grefenstette et al. [112] experimented with determining the political orientation of websites essentially by classifying the concate-nation
+   of all the documents found on that site. We group this type of work under the heading of “viewpoints and perspectives,”
+   and include under this rubric work on classifying texts as liberal, conservative, lib-ertarian,
+   etc. [219], placing texts along an ideological scale [178, 202],or representing Israeli versus Palestinian viewpoints [186, 187]."
+   Technicue-Part of speech tagging and mostly focusing on the presence adjectives
+
+"he accuracy of sentiment classification can be influenced by topic. Read [249] finds standard machine learning techniques for opinion analysis
+ to be both domain-dependent (with domains ranging from movie reviews to newswire articles) and temporally dependent
+  (based on datasets spanning different ranges of time periods but written at least one year apart)."
+
+  "One  approach  to  integrating  sentiment  and  topic  when  one  is looking for opinionated documents on a particular user-specified topic  is to simply first perform one analysis pass, say for topic, and  then ana-lyze the results with respect to sentiment [134]. (See Sebastiani [263]for a survey of machine learning approaches to topic-based text catego-rization.) Such a two-pass approach was taken by a number of systemsat the TREC Blog track in 2006, according to Ounis et al. [227], andothers [234]. Alternatively, one may jointly model topic and sentimentsimultaneously [84, 206], or treat one as a prior for the other [85]."
+
+
+"As is well known, opinions matter a great deal in politics. Somework has focused on understanding what voters are thinking [83, 110,126, 178, 219], whereas other projects have as a long term goal the clar-ification of politicians’ positions, such as what public figures support oroppose, to enhance the quality of information that voters have accessto [27, 111, 294].Sentiment analysis has specifically been proposed as a key enablingtechnology in eRulemaking, allowing the automatic analysis of the opin-ions that people submit about pending policy or government-regulationproposals [50, 175, 271]"
