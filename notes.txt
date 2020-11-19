@@ -21,6 +21,11 @@ Notes
     “Get out the vote: Determining support oropposition from congressional floor-debate transcripts,”
 112   G.  Grefenstette,  Y.  Qu,  J.  G.  Shanahan,  and  D.  A.  Evans,
    “Coupling niche  browsers  and  affect  analysis  for  an  opinion  mining  application,”.
+178 M. Laver, K. Benoit, and J. Garry,
+    “Extracting policy positions from polit-ical texts using words as data,
+
+202  L. W. Martin and G. Vanberg,
+ “A robust transformation procedure for inter-preting political text
 
   [27, 294] papers that might be useful  a political speech is in support of or opposition to the issue under debate
   "Grefenstette et al. [112] experimented with determining the political orientation of websites essentially by classifying the concate-nation
@@ -29,11 +34,18 @@ Notes
    etc. [219], placing texts along an ideological scale [178, 202],or representing Israeli versus Palestinian viewpoints [186, 187]."
    Technicue-Part of speech tagging and mostly focusing on the presence adjectives
 
-"he accuracy of sentiment classification can be influenced by topic. Read [249] finds standard machine learning techniques for opinion analysis
+"the accuracy of sentiment classification can be influenced by topic. Read [249] finds standard machine learning techniques for opinion analysis
  to be both domain-dependent (with domains ranging from movie reviews to newswire articles) and temporally dependent
   (based on datasets spanning different ranges of time periods but written at least one year apart)."
 
-  "One  approach  to  integrating  sentiment  and  topic  when  one  is looking for opinionated documents on a particular user-specified topic  is to simply first perform one analysis pass, say for topic, and  then ana-lyze the results with respect to sentiment [134]. (See Sebastiani [263]for a survey of machine learning approaches to topic-based text catego-rization.) Such a two-pass approach was taken by a number of systemsat the TREC Blog track in 2006, according to Ounis et al. [227], andothers [234]. Alternatively, one may jointly model topic and sentimentsimultaneously [84, 206], or treat one as a prior for the other [85]."
+134  M. Hurst and K. Nigam,
+“Retrieving topical sentiments from online documentcollections
+
+  "One  approach  to  integrating  sentiment  and  topic  when  one  is looking for opinionated documents on a particular user-specified topic  is to
+  simply first perform one analysis pass, say for topic, and  then ana-lyze the results with respect to sentiment [134].
+  (See Sebastiani [263]for a survey of machine learning approaches to topic-based text catego-rization.)
+  Such a two-pass approach was taken by a number of systems at the TREC Blog track in 2006, according to Ounis et al. [227], andothers [234].
+  Alternatively, one may jointly model topic and sentiment simultaneously [84, 206], or treat one as a prior for the other [85]."
 
 
-"As is well known, opinions matter a great deal in politics. Somework has focused on understanding what voters are thinking [83, 110,126, 178, 219], whereas other projects have as a long term goal the clar-ification of politicians’ positions, such as what public figures support oroppose, to enhance the quality of information that voters have accessto [27, 111, 294].Sentiment analysis has specifically been proposed as a key enablingtechnology in eRulemaking, allowing the automatic analysis of the opin-ions that people submit about pending policy or government-regulationproposals [50, 175, 271]"
+"As is well known, opinions matter a great deal in politics. Some work has focused on understanding what voters are thinking [83, 110,126, 178, 219], whereas other projects have as a long term goal the clar-ification of politicians’ positions, such as what public figures support oroppose, to enhance the quality of information that voters have accessto [27, 111, 294].Sentiment analysis has specifically been proposed as a key enablingtechnology in eRulemaking, allowing the automatic analysis of the opin-ions that people submit about pending policy or government-regulation proposals [50, 175, 271]"
