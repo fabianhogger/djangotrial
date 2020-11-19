@@ -39,7 +39,7 @@ Notes
   (based on datasets spanning different ranges of time periods but written at least one year apart)."
 
 134  M. Hurst and K. Nigam,
-“Retrieving topical sentiments from online documentcollections
+“Retrieving topical sentiments from online document collections
 
   "One  approach  to  integrating  sentiment  and  topic  when  one  is looking for opinionated documents on a particular user-specified topic  is to
   simply first perform one analysis pass, say for topic, and  then ana-lyze the results with respect to sentiment [134].
@@ -49,3 +49,8 @@ Notes
 
 
 "As is well known, opinions matter a great deal in politics. Some work has focused on understanding what voters are thinking [83, 110,126, 178, 219], whereas other projects have as a long term goal the clar-ification of politicians’ positions, such as what public figures support oroppose, to enhance the quality of information that voters have accessto [27, 111, 294].Sentiment analysis has specifically been proposed as a key enablingtechnology in eRulemaking, allowing the automatic analysis of the opin-ions that people submit about pending policy or government-regulation proposals [50, 175, 271]"
+
+
+Feldman, R. (2013). Techniques and applications for sentiment analysis. Communications of the ACM, 56(4), 82. doi:10.1145/2436256.2436274
+
+Notes
