@@ -72,6 +72,8 @@ Attensity  (http://attensity.com), and Converseon (http://converseon.com)
 Young, L., & Soroka, S. (2012). Affective News: The Automated Coding of Sentiment in Political Texts. Political Communication
 
 Notes
+Lexicoder Sentiment Dictionary
+ANOVA testing
 "There are now numerous machine-readable dictionaries available for research,
  but they vary widely with respect to categories and scope of coverage.
   They include, for example, the following: from political science ,the GI (Stone et al., 1966);
@@ -90,4 +92,15 @@ Notes
    RID was designed to distinguish between primordial and conceptual thinking;
    and DICTION was developed primarily to understand the rhetoric of speechmakers.
    Closest to our purposes are GI and LIWC, both of which were developed to analyze various affect categories in political texts"
-   
+(on the LSD dataset)
+"Thus, tone should be considered acomposite measure of (a) the relative negativity of the actual events or issues being covered and
+ (b) the opinions and attitudes of newsmakers about those events and issues"
+"Simply comparing results across dictionaries is not enough, of course—we need to compare them with some other externally valid analysis,
+specifically human-coded content-analytic data. We do so here using a body of data coded by three trained human coders.
+The data include 900 articles from the New York Times.
+Four hundred fifty were randomly drawn from an existing database on all economics stories published in the Times from 1988–2008.
+The other 450 were randomly drawn from a previously topic-coded database of all front-page stories in the Times from 2007–2009.
+ In this case, we drew 150 randomly from within each of three topic categories: environment, foreign affairs, and crime.
+ The selection of these topics provides, we believe, a good basis for an initial test of theLSD.
+  We have chosen a range of domestic and international policy issues;
+  we also intentionally use issues that have seen a particularly large amount of attention in the political communication literature."
