@@ -54,3 +54,40 @@ Notes
 Feldman, R. (2013). Techniques and applications for sentiment analysis. Communications of the ACM, 56(4), 82. doi:10.1145/2436256.2436274
 
 Notes
+General  Inquirer  lexicon;33  http://www.wjh.harvard.edu/~inquirer/    spread-sheet_guide.htm.˲Sentiment    lexicon;13    http://www.cs.uic.edu/~liub/FBS/sentiment-analy-sis.html.˲MPQA   subjectivity   lexicon;38   http://www.cs.pitt.edu/mpqa/subj_lexicon.html.˲SentiWordNet;6     http://sentiword-net.isti.cnr.it/.˲Emotion     lexicon;23     http://www.purl.org/net/emolex.˲Financial Sentiment Lexicons (suit-ed  for  the  determination  of  the  senti-ment  of  financial  documents);22  http://nd.edu/~mcdonald/Word_Lists.html.
+
+
+
+Cambria, E., Schuller, B., Xia, Y., & Havasi, C. (2013). New Avenues in Opinion Mining and Sentiment Analysis
+
+Notes
+
+
+Tools: SenticNet  (http://sentic.net),  Luminoso  (http://luminoso.com),  Factiva  (http://dowjones.com/factiva),
+Attensity  (http://attensity.com), and Converseon (http://converseon.com)
+
+
+
+
+Young, L., & Soroka, S. (2012). Affective News: The Automated Coding of Sentiment in Political Texts. Political Communication
+
+Notes
+"There are now numerous machine-readable dictionaries available for research,
+ but they vary widely with respect to categories and scope of coverage.
+  They include, for example, the following: from political science ,the GI (Stone et al., 1966);
+   from communication, DICTION (Hart, 2000a); from psychology, Linguistic Inquiry and Word Count (LIWC)
+   (Pennebaker, Francis, & Booth,2001), the Regressive Imagery Dictionary (RID) (Martindale, 1975, 1990),
+    and TAS/C(Mergenthaler, 1996, 2008); from behavioral science,
+     Affective Norms for English Words(ANEW) (Bradley & Lang, 1999); from literature,
+     Whissell’s Dictionary of Affect in Language (DAL) (Whissell, 1989);
+     from linguistics, WordNet-Affect (WNA) (Strapparava& Valitutti, 2004);
+      and from computational linguistics, Turney and Littman’s (2003) point-wise mutual (PMI) information wordlist,
+       as well as the ubiquitous Roget’s Thesaurus(hereafter Roget’s) (Roget, 1911)"
+"Indeed, notwithstanding concerns about ambiguity, most dictionaries are generated for a particular purpose or genre of text,
+ and as a consequence tend to be temporally and corpo-rally specific.
+ For instance, TAS/C was created to measure emotional tone and abstraction in psychotherapy sessions;
+  DAL was developed to analyze the affective content of poetry and literature;
+   RID was designed to distinguish between primordial and conceptual thinking;
+   and DICTION was developed primarily to understand the rhetoric of speechmakers.
+   Closest to our purposes are GI and LIWC, both of which were developed to analyze various affect categories in political texts"
+   
