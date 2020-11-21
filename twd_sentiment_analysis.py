@@ -29,3 +29,20 @@ stoplist=stopwords.words('english')
 filtered_words=[remove_StopWords(sen) for sen in lower_tokens]
 data['Text_Final']=[' '.join(sen) for  sen in filtered_words]
 data['tokens']=filtered_words
+
+
+#ONE HOT ENCODING
+
+pos=[]
+neg=[]
+for l in data.Label:
+    if l ==0:
+        pos.append(0)
+        neg.append(1)
+    else if l==1:
+        pos.append(1)
+        neg.append(0)
+data['Pos']=pos
+data['Neg']=neg
+
+data=data[['Text_Final','tokens','Label','Pos','Neg']]
