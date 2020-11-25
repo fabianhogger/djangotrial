@@ -3,6 +3,7 @@ import re
 import string
 from nltk import word_tokenize
 from nltk.corpus import stopwords
+from sklearn.model_selection import train_test_split
 data=pd.read_csv('imdb_labelled.tsv',header=None,delimiter='\t')
 data.columns=['Text','Label']
 #print(data.head())
@@ -39,10 +40,34 @@ for l in data.Label:
     if l ==0:
         pos.append(0)
         neg.append(1)
-    else if l==1:
+    elif l==1:
         pos.append(1)
         neg.append(0)
 data['Pos']=pos
 data['Neg']=neg
 
 data=data[['Text_Final','tokens','Label','Pos','Neg']]
+print(data.head())
+
+
+
+
+
+
+
+data_train,data_test=train_test_split(data,test_size=0.10,random_state=42)
+all_training_words=[word for tokens in data_train['tokens'] for word in tokens]
+training_sentence_lentghs=[len(tokens) for tokens in data_train['tokens']]
+TRAIN_VOCAB=sorted(list(set(all_training_words)))
+print("%s words total, with a vocabulary size of %s" %(len(all_training_words),len(TRAIN_VOCAB)))
+print("max sentence length is %s " %max(training_sentence_lentghs))
+
+
+all_test_words = [word for tokens in data_test['tokens'] for word in tokens]
+test_sentence_lengths = [len(tokens) for tokens in data_test['tokens']]
+TEST_VOCAB = sorted(list(set(all_test_words)))
+print('%s words total, with a vocabulary size of %s' % (len(all_test_words), len(TEST_VOCAB)))
+print('Max sentence length is %s' % max(test_sentence_lengths))
+
+
+word2vec_path = 'GoogleNews-vectors-negative300.bin.gz'
