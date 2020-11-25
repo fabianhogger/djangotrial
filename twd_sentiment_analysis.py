@@ -4,6 +4,7 @@ import string
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from sklearn.model_selection import train_test_split
+from gensim.test.utils import datapath
 data=pd.read_csv('imdb_labelled.tsv',header=None,delimiter='\t')
 data.columns=['Text','Label']
 #print(data.head())
@@ -69,5 +70,5 @@ TEST_VOCAB = sorted(list(set(all_test_words)))
 print('%s words total, with a vocabulary size of %s' % (len(all_test_words), len(TEST_VOCAB)))
 print('Max sentence length is %s' % max(test_sentence_lengths))
 
-
-word2vec_path = 'GoogleNews-vectors-negative300.bin.gz'
+#Loading Google News Word2Vec model
+wv_from_bin = KeyedVectors.load_word2vec_format(datapath("euclidean_vectors.bin"), binary=True)  # C bin format
