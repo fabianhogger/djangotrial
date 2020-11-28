@@ -24,3 +24,10 @@ nltk.download('wordnet')
 
 def lemmatize_stemming(text):
     return stemmer.stem(WordNetLemmatizer().lemmatize(text,pos='v'))
+
+def preprocess(text):
+    result=[]
+    for token in gensim.utils.simple_preprocess(text):
+        if token not in gensim.parsing.preprossesing.STOPWORDS AND len(token)>3:
+            result.append(lemmatize_stemming(token))
+            return result
