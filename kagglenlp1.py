@@ -20,3 +20,17 @@ matcher=PhraseMatcher(nlp.vocab,attr='LOWER')#to match a list of terms, it's eas
 terms=['Galaxy Note', 'iPhone 11', 'iPhone XS', 'Google Pixel']
 patterns=[nlp(text) for text in terms]
 matcher.add("TerminologyList",patterns)
+
+text_doc = nlp("Glowing review overall, and some really interesting side-by-side "
+               "photography tests pitting the iPhone 11 Pro against the "
+               "Galaxy Note 10 Plus and last year’s iPhone XS and Google Pixel 3.")
+    matches=matcher(text_doc)
+
+print(matches)
+"""
+[(3766102292120407359, 17, 19), (3766102292120407359, 22, 24), (3766102292120407359, 30, 32), (3766102292120407359, 33, 35)]
+
+
+The matches here are a tuple of the match id and the positions of the start and end of the phrase.
+
+"""
