@@ -14,7 +14,7 @@ def get_prime_factors(value):
             prime=prime+2
 
 
-    return prime_list=value
+    return value
 """
 def is_prime(number):
     if number > 1:
@@ -23,39 +23,35 @@ def is_prime(number):
                 return False
     return True
 def get_prime_factors(value):
-    if not is_prime(value):
-        print("DEBUG")
-        prime_list=[]
-        prime=2
-        while True:
-            print("WHILE CLAUSE")
-            if (value/prime).is_integer():
-                print("is intiger ",(value/prime))
-                value=int(value/prime)
-                print("next value ",value)
-                prime_list.append(prime)
-                print("prime_list",prime_list)
-                if is_prime(value):
-                    prime_list.append(value)
-                    return prime_list
-                if prime==2:
-                    prime=prime+1
-                else:
-                    prime=prime+2
-                print("new prime ",prime)
-            elif prime<value:
-                print("ELIF")
-                if prime==2:
-                    prime=prime+1
-                    print("prime got to 3")
-                else:
-                    prime=prime+2
-                print("prime", prime)
+    prime_list=[]
+    prime=2
+    while (prime<value):
+        if (value/prime).is_integer():
+            value=int(value/prime)
+            prime_list.append(prime)
+            if is_prime(value):
+                prime_list.append(value)
+                return prime_list
+            if prime==2:
+                prime=prime+1
             else:
-                break
-    else:
-        return value
+                prime=prime+2
+            
 
 
-returned=get_prime_factors(147)
+
+returned=get_prime_factors(12)
+print("returned :", returned)
+
+def get_primef2(N):
+    factors=list()
+    divisor=2
+    while(divisor<=N):
+        if(N%divisor)==0:
+            factors.append(divisor)
+            N=N/divisor
+        else:
+            divisor+=1
+    return factors
+returned=get_primef2(12)
 print("returned :", returned)
