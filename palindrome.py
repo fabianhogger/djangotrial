@@ -5,11 +5,8 @@ def is_palindrome(word):
     letterlist=[letter for letter in word]
     letterlist.reverse()
     drow=''.join(letterlist)
-    if drow==word:
-        return True
-    else:
-        return False
-a=is_palindrome("lev-e l")
+    return drow==word
+a=is_palindrome("Lev-e l")
 print(a)
 
 
@@ -17,4 +14,6 @@ print(a)
 def is_pal(phrase):
     forwards=''.join(re.findall(r'[a-z]+',phrase.lower()))
     backwards=forwards[::-1]
-    return backward==forwards
+    return backwards==forwards
+b=is_pal("Lev-e l")
+print(b)
