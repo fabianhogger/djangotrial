@@ -11,3 +11,10 @@ def is_palindrome(word):
         return False
 a=is_palindrome("lev-e l")
 print(a)
+
+
+
+def is_pal(phrase):
+    forwards=''.join(re.findall(r'[a-z]+',phrase.lower()))
+    backwards=forwards[::-1]
+    return backward==forwards
