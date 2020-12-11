@@ -20,3 +20,4 @@ df=pd.read_csv("SMSSpamCollection.tsv",sep="\t",header=None)
 df.columns=['label','body_text']
 #what is the shape of the data
 print("input data has {} rows and {} columns ".format(len(df),len(df.columns)))
+print("out of {} rows {} are spam and {} are ham".format(len(df),len(df[df['label']=='spam']),len(df[df['label']=='ham'])))
