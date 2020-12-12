@@ -39,3 +39,10 @@ print(re.findall("\S+",re_test))
 print(re.findall("\S+",re_test_messy))
 print(re.findall("\w+",re_test_messy2))
 """
+
+pep8_test="I try to follow PEP8 guidelines"
+pep7_test="I try to follow PEP7 guidelines"
+peep8_test="I try to follow PEEP8 guidelines"
+print(re.findall("[A-Z]+",pep8_test))
+print(re.findall("[A-Z]+[0-9]+",peep8_test))
+print(re.sub('[A-Z]+[0-9]+',"PEP8 Python Styleguide",pep8_test))
