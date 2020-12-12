@@ -21,6 +21,7 @@ print(df.head())
 
 df=pd.read_csv("SMSSpamCollection.tsv",sep="\t",header=None)
 df.columns=['label','body_text']
+"""
 #what is the shape of the data
 print("input data has {} rows and {} columns ".format(len(df),len(df.columns)))
 print("out of {} rows {} are spam and {} are ham".format(len(df),len(df[df['label']=='spam']),len(df[df['label']=='ham'])))
@@ -33,3 +34,8 @@ re_test_messy2='this-is-made/up.string*to>>>>test----2""""""different-regex-meth
 print(re.split("\s",re_test_messy))
 print(re.split("\s+",re_test_messy))
 print(re.split("\W+",re_test_messy))
+
+print(re.findall("\S+",re_test))
+print(re.findall("\S+",re_test_messy))
+print(re.findall("\w+",re_test_messy2))
+"""
