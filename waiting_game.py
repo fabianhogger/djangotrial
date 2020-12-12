@@ -27,3 +27,19 @@ while True:
                 print("2nd if ")
                 break
           # finishing the loop
+import random
+
+def waiting_game():
+    target=random.randint(2,4)
+    print("Your target time is {} seconds".format(target))
+    input("---Press Enter to Begin---")
+    start=time.perf_counter()
+    input("---Press again after {} seconds---".format(target))
+    elapsed=time.perf_counter()-start
+    print("Elapsed time is {} seconds".format(elapsed))
+    if elapsed==target:
+        print("Unbelievable !Perfect Timing!")
+    elif elapsed<target:
+        print("{} seconds too fast".format(target-elapsed))
+    else:
+        print("{} seconds too slow".format(elapsed-target))
