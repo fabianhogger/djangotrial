@@ -1,34 +1,33 @@
 import time
 import keyboard
-flag=False
-print("WELCOME TO THE WAITING GAME")
-print("Press enter to start and than press again to win,you win if you press after 4 seconds")
-while True:
-    if not keyboard.is_pressed('Enter') and flag:
-        flag=False  # making a loop
-    elif keyboard.is_pressed('Enter') and not flag:  # if key 'q' is pressed
-        result = time.localtime()
-        start=time.mktime(result)
-        flag=True
-        print("1st LOOP")
-        while True:
-            if not keyboard.is_pressed('Enter') and flag:
-                flag=False
-                print("1st if")
-            elif keyboard.is_pressed("Enter") and not flag:
-                result2 = time.localtime()
-                end=time.mktime(result2)
-                flag=True
-                print("Elapsed time: ",end-start)
-                if (end-start)==4.0 :
-                    print("you win!")
-                else:
-                    print("LOST ,PRESS ENTER TO TRY AGAIN")
-                print("2nd if ")
-                break
-          # finishing the loop
 import random
+def wait_game():
 
+    flag=False
+    print("WELCOME TO THE WAITING GAME")
+    target=random.randint(2,4)
+    print("Your target time is {} seconds".format(target))
+    while True:
+        if not keyboard.is_pressed('Enter') and flag:
+            flag=False  # making a loop
+        elif keyboard.is_pressed('Enter') and not flag:  # if key 'q' is pressed
+            result = time.localtime()
+            start=time.mktime(result)
+            flag=True
+            while True:
+                if not keyboard.is_pressed('Enter') and flag:
+                    flag=False
+                elif keyboard.is_pressed("Enter") and not flag:
+                    result2 = time.localtime()
+                    end=time.mktime(result2)
+                    flag=True
+                    print("Elapsed time: ",end-start)
+                    if (end-start)==target:
+                        print("you win!")
+                    else:
+                        print("LOST ,PRESS ENTER TO TRY AGAIN")
+                    break
+              # finishing the loop
 def waiting_game():
     target=random.randint(2,4)
     print("Your target time is {} seconds".format(target))
@@ -43,3 +42,4 @@ def waiting_game():
         print("{} seconds too fast".format(target-elapsed))
     else:
         print("{} seconds too slow".format(elapsed-target))
+wait_game()
