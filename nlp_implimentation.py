@@ -26,7 +26,7 @@ def tokenize(text):
 def remove_stopw(tokenized_list):
     nlist=[word for word in tokenized_list if word not in stopwords]
     return nlist
-    
+
 df["body_text_nonstop"]=df['boyd_text_tokenized'].apply(lambda x: remove_stopw(x))
 print(df.head())
 
@@ -36,9 +36,10 @@ print(df.head())
 def clean_text(text):
     text=''.join([char for char in text if char not in string.punctuation])
     tokens=re.split('\W+',text)
-    text=[word for word in tokenized_list if word not in stopwords]
+    text=[word for word in tokens if word not in stopwords]
     return text
-
+df["body_text_nonstop"]=df['body_text'].apply(lambda x: clean_text(x.lower()))
+print(df.head())
 
 #Stemming
 #Using the porter Stemmer
