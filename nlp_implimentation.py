@@ -45,7 +45,28 @@ print(df.head())
 #Using the porter Stemmer
 
 ps=nltk.PorterStemmer()
-
+"""
 print(ps.stem('run'))
 print(ps.stem('runner'))
 print(ps.stem('running'))
+"""
+def stemming(tokenized_list):
+    stemmed_list=[ps.stem(words) for word in tokenized_list]
+    return text
+df["body_text_stemmed"]=df['body_text'].apply(lambda x: stemming(x))
+
+"""
+Lemmatizing
+The process of grouping together the inflected forms of a word so they can be analyzed by a single term , identified by the the word's lemma
+or
+Using vocabulary analysis of words  aiming to remove  inflectional endings to return the dictionary form of the word
+"""
+
+"""
+Stemming VS Lemmatizing
+
+Stemming is typically faster as it usually chops up the end of the word using heuristics,
+without any understanding of the context in which the word is used.
+Lemmatizing is typically more accurate  as it uses more informed analysis to create groups of
+ words with similar meaning based on the context around the word
+ """
