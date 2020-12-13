@@ -51,8 +51,8 @@ print(ps.stem('runner'))
 print(ps.stem('running'))
 """
 def stemming(tokenized_list):
-    stemmed_list=[ps.stem(words) for word in tokenized_list]
-    return text
+    stemmed_list=[ps.stem(word) for word in tokenized_list]
+    return stemmed_list
 df["body_text_stemmed"]=df['body_text'].apply(lambda x: stemming(x))
 
 """
@@ -70,3 +70,14 @@ without any understanding of the context in which the word is used.
 Lemmatizing is typically more accurate  as it uses more informed analysis to create groups of
  words with similar meaning based on the context around the word
  """
+wn=nltk.WordNetLemmatizer()
+print(ps.stem('goose'))
+print(ps.stem('geese'))
+print(wn.lemmatize("goose"))
+print(wn.lemmatize("geese"))
+def lemmatizing(tokenized_list):
+    lemmatized=[wn.lemmatize(word) for word in tokenized_list]
+    return lemmatized
+
+df["body_text_lemmatized"]=df['body_text_nonstop'].apply(lambda x: lemmatizing(x))
+print(df.head())
