@@ -1,4 +1,7 @@
 import re
+import pickle
+
+
 thisdict = {
   "brand": "Ford",
   "model": "Mustang",
@@ -40,11 +43,22 @@ def save_dict(dict,path):
         f.write(" type:{}".format(type(value)))
         f.write(",")
     f.close()
-
-print("THIS IS WHAT COMES OUT WHEN YOU PRINT DICTIONARY",thisdict)
-print("DICT KEYS",thisdict.keys())
-print("DICT VALUES",thisdict.values())
 path='fakelos.txt'
 save_dict(thisdict,path)
 newdict=load_dict(path)
 print(newdict)
+"""
+Solution using pickle library for python object serialization
+
+"""
+
+def pickle_dict(dict,path):
+    with open(path,"wb") as file:
+        pickle.dump(dict,file)
+def load_dict(path):
+        with open(path,"rb") as file:
+            return pickle.load(file)
+
+pickle_dict(thisdict,path)
+dictionary=load_dict(path)
+print("Pickled dictionary: ",dictionary)
