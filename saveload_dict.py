@@ -5,18 +5,23 @@ thisdict = {
   "year": 1964
 }
 
-print(thisdict.keys())
-print(thisdict.values())
+
 def load_dict(path):
     f=open(path,"r")
     file=f.read()
     filesplit=file.split("\n")
-    dict=dict()
-    
+    newdict=dict()
+    keylist=filesplit[0].split(',')
+    valuelist=filesplit[1].split(',')
+    for i in range(len(keylist)):
+        if keylist[i]!='':
+            newdict[keylist[i]]=valuelist[i]
+    return newdict
+
+
 def save_dict(dict,path):
     f=open(path,"w")
     keylist=dict.keys()
-    list(keylist)
     valuelist=dict.values()
     for key in keylist:
         f.write(key)
@@ -28,6 +33,10 @@ def save_dict(dict,path):
     f.close()
     print("done")
 
+
+print("THIS IS WHAT COMES OUT WHEN YOU PRINT DICTIONARY",thisdict)
+print("DICT KEYS",thisdict.keys)
 path='fakelos.txt'
 save_dict(thisdict,path)
-load_dict(path)
+newdict=load_dict(path)
+print(newdict)
