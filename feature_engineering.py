@@ -20,4 +20,20 @@ def count_punct(text):
     count=sum([1 for char in text if char in string.punctuation])
     return count/(len(text)-text.count(" "))
 df["punct_percent"]=df["body_text"].apply(lambda x:count_punct(x))
-print(df["punct_percent"][:20])
+#print(df["punct_percent"][:20])
+
+#Feature Evaluation
+from matplotlib import pyplot
+import numpy as np
+
+bins=np.linspace(0,200,40)#me ta bins xorizontai oi katigories sto histogram
+pyplot.hist(df[df['label']=="spam"]['body_len'],bins,alpha=0.5,label="Spam")
+pyplot.hist(df[df['label']=="ham"]['body_len'],bins,alpha=0.5,label="Ham ")
+pyplot.legend(loc="upper right")
+pyplot.show()
+
+bins=np.linspace(0,50,40)#me ta bins xorizontai oi katigories sto histogram
+pyplot.hist(df[df['label']=="spam"]['punct_percent'],bins,alpha=0.5,label="Spam")
+pyplot.hist(df[df['label']=="ham"]['punct_percent'],bins,alpha=0.5,label="Ham ")
+pyplot.legend(loc="upper right")
+pyplot.show()
