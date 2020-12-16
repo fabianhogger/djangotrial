@@ -13,7 +13,7 @@ import string
 import re
 import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.esemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier
 def clean_text(text):
     text=''.join([char for char in text if char not in string.punctuation])
     tokens=re.split('\W+',text)
@@ -40,3 +40,12 @@ X_tfidf=tfidf_vec.fit_transform(df['body_text'])
 X_tfidf_df=pd.DataFrame(X_tfidf.toarray())
 X_features=pd.concat([df['body_len'],df['punct_percent'],X_tfidf_df],axis=1)
 print(X_features.head())
+
+"""
+Import Kfold and cross validation
+
+"""
+from sklearn.model_selection import KFold,cross_val_score
+rf=RandomForestClassifier(n_jobs=-1)
+k_fold=KFold(n_splits=5)#5 subsets of data for iterations
+print(cross_val_score(rf,X_features,df["label"],cv=k_fold,scoring='accuracy',n_jobs=-1))
