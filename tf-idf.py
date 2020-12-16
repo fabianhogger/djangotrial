@@ -17,7 +17,10 @@ def clean_text(text):
     return text
 
 tfidf_vec=TfidfVectorizer(analyzer=clean_text)
-X_tfidf=tfidf_vec.fit_transform(df['body_text'])
+X_tfidf=tfidf_vec.fit_transform(df['body_text'][:20])
 
 print(X_tfidf.shape)
 print(tfidf_vec.get_feature_names())
+X_tfidf_df=pd.DataFrame(X_tfidf.toarray())
+X_tfidf_df.columns=tfidf_vec.get_feature_names()
+print(X_tfidf_df.head())
