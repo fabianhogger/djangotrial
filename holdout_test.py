@@ -45,7 +45,7 @@ print(X_features.head())
 Explore Holdout test evaluation Technique
 
 """
-from sklearn.metrics import precision_recall_fscore_support as cross_val_score
+from sklearn.metrics import precision_recall_fscore_support as score
 from sklearn.model_selection import  train_test_split
 X_train,X_test,y_train,y_test=train_test_split(X_features,df['label'],test_size=0.2)
 rf=RandomForestClassifier(n_estimators=50,max_depth=20,n_jobs=-1)
@@ -55,3 +55,6 @@ Feature Importances shows attribute importances (RandomForestClassifier has this
 """
 
 print(sorted(zip(rf_model.feature_importances_,X_train.columns),reverse=True)[:10])
+y_pred=rf_model.predict(X_test)
+precision,recall,fscore,support=score(y_test,y_pred,pos_label='spam',average="binary")
+print("precision={},recall={},accuracy={}".format(round(precision,3),round(recall,3),round((y_pred==y_test).sum()/len(y_test),3)))
