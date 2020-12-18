@@ -80,3 +80,13 @@ precision,recall,fscore,support=score(y_test,y_pred,pos_label='spam',average="bi
 print("GradientBoostingClassifier")
 print("Number Of Estimators= {},Depth= {} \n".format(150,11))
 print("Fit-Time={},Pred-Time={}.precision={},recall={},accuracy={}".format(round(fit_time,3),round(pred_time,3),round(precision,3),round(recall,3),round((y_pred==y_test).sum()/len(y_test),3)))
+"""
+RandomForestClassifier
+Number Of Estimators= 150,Depth= None
+
+Fit-Time=3.884,Pred-Time=0.256.precision=1.0,recall=0.817,accuracy=0.978
+GradientBoostingClassifier
+Number Of Estimators= 150,Depth= 11
+
+Fit-Time=216.436,Pred-Time=0.174.precision=0.872,recall=0.885,accuracy=0.971
+"""
