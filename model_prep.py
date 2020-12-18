@@ -59,8 +59,24 @@ end=time.time()
 pred_time=end-start#prediction time
 
 precision,recall,fscore,support=score(y_test,y_pred,pos_label='spam',average="binary")
+print("RandomForestClassifier")
 print("Number Of Estimators= {},Depth= {} \n".format(150,None))
 print("Fit-Time={},Pred-Time={}.precision={},recall={},accuracy={}".format(round(fit_time,3),round(pred_time,3),round(precision,3),round(recall,3),round((y_pred==y_test).sum()/len(y_test),3)))
 
 
 gb=GradientBoostingClassifier(n_estimators=150,max_depth=11)
+start=time.time()
+gb_model=gb.fit(X_train_vect,y_train)
+end=time.time()
+fit_time=end-start#timing fit
+
+start=time.time()
+
+y_pred=gb_model.predict(X_test_vect)
+end=time.time()
+pred_time=end-start#prediction time
+
+precision,recall,fscore,support=score(y_test,y_pred,pos_label='spam',average="binary")
+print("GradientBoostingClassifier")
+print("Number Of Estimators= {},Depth= {} \n".format(150,11))
+print("Fit-Time={},Pred-Time={}.precision={},recall={},accuracy={}".format(round(fit_time,3),round(pred_time,3),round(precision,3),round(recall,3),round((y_pred==y_test).sum()/len(y_test),3)))
