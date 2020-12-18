@@ -3,7 +3,6 @@ import string
 import re
 import nltk
 from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
-from sklearn.metrics import precision_recall_fscore_support as score
 from sklearn.model_selection import  train_test_split
 def clean_text(text):
     text=''.join([char.lower() for char in text if char not in string.punctuation])
@@ -40,6 +39,28 @@ THIS is the difference with what we did earlier which was not correct
 this time we have fit only on the training data so that the metrics on the test data will be closer to reality
 """
 tfidf_train=pd.DataFrame(tfidf_train.toarray())
-X_train_vect=pd.concat([df['body_len'],df['punct_percent'].reset_index(drop=True),tfidf_train],axis=1)
+X_train_vect=pd.concat([X_train[['body_len','punct_percent']].reset_index(drop=True),tfidf_train],axis=1)
 tfidf_test=pd.DataFrame(tfidf_test.toarray())
-X_test_vect=pd.concat([df['body_len'],df['punct_percent'].reset_index(drop=True),tfidf_test],axis=1)
+X_test_vect=pd.concat([X_test[['body_len','punct_percent']].reset_index(drop=True),tfidf_test],axis=1)
+from sklearn.ensemble import RandomForestClassifier,GradientBoostingClassifier
+from sklearn.metrics import precision_recall_fscore_support as score
+import time
+
+rf= RandomForestClassifier(n_estimators=150,max_depth=None,n_jobs=-1)
+start=time.time()
+rf_model=rf.fit(X_train_vect,y_train)
+end=time.time()
+fit_time=end-start#timing fit
+
+start=time.time()
+
+y_pred=rf_model.predict(X_test_vect)
+end=time.time()
+pred_time=end-start#prediction time
+
+precision,recall,fscore,support=score(y_test,y_pred,pos_label='spam',average="binary")
+print("Number Of Estimators= {},Depth= {} \n".format(150,None))
+print("Fit-Time={},Pred-Time={}.precision={},recall={},accuracy={}".format(round(fit_time,3),round(pred_time,3),round(precision,3),round(recall,3),round((y_pred==y_test).sum()/len(y_test),3)))
+
+
+gb=GradientBoostingClassifier(n_estimators=150,max_depth=11)
