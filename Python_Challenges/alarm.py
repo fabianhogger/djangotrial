@@ -1,4 +1,6 @@
 import time
+import sched
+import winsound as ws
 from playsound import playsound
 def alarm():
     while(True):
@@ -38,8 +40,8 @@ def alarm():
                 print("DRING DRING MOTHERFUCKA TIME TO SLAVE AWAY LIKE A NICE CAPITALIST VICTIM")
                 playsound('Horn.mp3')
 
-alarm()
-playsound('Horn.mp3')
+#alarm()
+#playsound('Horn.mp3')
 """
 localtime=list(time.localtime())
 print(type(localtime[3]),type(localtime[4]),type(localtime[5]))
@@ -49,4 +51,9 @@ localtime=list(time.localtime())
 if localtime[3]==hour and localtime[4]==min and localtime[5]==sec:
     print("DRING DRING MOTHERFUCKA TIME TO SLAVE AWAY LIKE A NICE CAPITALIST VICTIM")
 """
-print(localtime)
+def set_alarm(alarm_time,wav_file,message):
+    s=sched.scheduler(time.time,time.sleep)
+    s.enterabs(alarm_time,1,print,argument=(message,))
+    a.enterabs(alarm_time,ws.PlaySound,argument=(wav_file,ws.SND_FILENAME))
+    print("Alarm set for ",time.asctime(time.localtime(alarm_time))
+    s.run()
