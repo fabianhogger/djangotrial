@@ -22,8 +22,8 @@ X_test_seq=tokenizer.texts_to_sequences(X_test)
 
 
 #Padding
-X_train_seq_padded=pad_sequences(X_train_seq,50)
-X_test_seq_padded=pad_sequences(X_test_seq,50)
+X_train_seq_padded=pad_sequences(X_train_seq,100)
+X_test_seq_padded=pad_sequences(X_test_seq,100)
 
 
 import keras.backend as K
@@ -54,3 +54,17 @@ model.compile(optimizer="adam",loss="binary_crossentropy",metrics=['accuracy',pr
 
 
 history=model.fit(X_train_seq_padded,y_train,batch_size=32,epochs=10,validation_data=(X_test_seq_padded,y_test))
+"""100 -input size loss: 13.2312 - accuracy: 0.1371 - precision_m: 0.1370 - recall_m: 0.9929 - val_loss: 13.3892 - val_accuracy: 0.1220 - val_precision_m: 0.1218 - val_recall_m: 0.9714
+    50 input size  loss: 13.3413 - accuracy: 0.1299 - precision_m: 0.1298 - recall_m: 0.9714 - val_loss: 12.9516 - val_accuracy: 0.1507 - val_precision_m: 0.1507 - val_recall_m: 1.0000
+"""
+
+import matplotlib.pyplot as plt
+for i in ['accuracy','accuracy','recall']:
+    acc=history.history[i]
+    val_acc=history.history['val_{}'.format(i)]
+    epochs=range(1,len(acc)+1)
+    plt.figure()
+    plt.plot(epochs,acc,label='Training Accuracy')
+    plt.plot(epochs,val_acc,label='validation Accuracy')
+    plt.legend()
+    plt.show()
