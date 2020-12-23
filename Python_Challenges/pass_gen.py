@@ -9,14 +9,14 @@ def pass_gen(nofwords):
             value.append(random.randint(1,6))
         value=''.join([str(num) for num in value])
         values.append(value)
-    print(values)
     password=[]
-    with open('diceware.txt','r') as file:
-        for val in values:
+    for val in values:
+        with open('diceware.txt','r') as file:
             for line in file:
                 pair=line.split("\t")
                 if val==pair[0]:
                     word=re.sub('\n','',pair[1])
                     password.append(word)
-    print(password)
-pass_gen(5)
+    return ' '.join(password)
+password=pass_gen(5)
+print(password)
