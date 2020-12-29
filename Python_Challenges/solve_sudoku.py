@@ -1,4 +1,4 @@
-
+from time import perf_counter
 def check_line(puzzle,i,k):
     if k not in puzzle[i]:
         return True
@@ -14,6 +14,7 @@ def check_column(puzzle,d,k):
         return False
 
 def solve_sudoku(puzzle):
+    t1_start = perf_counter()
     changed=True
     while(changed==True):
         changed=False
@@ -42,12 +43,28 @@ def solve_sudoku(puzzle):
                         changed=True
                 j=j+3
             i=i+3
+    t1_stop = perf_counter()
+    print("Time: {}".format(t1_stop-t1_start))
     return puzzle
 
 from itertools import product
 
 
-
+def print_sudoku(puzzle):
+    t1_start = perf_counter()
+    puzzle=[['*' if num==0 else num for num in row] for row in puzzle]
+    print()
+    for row in range(0,9):
+        if ((row%3 ==0 ) and (row!=0)):
+            print('-'*33)
+        for col in range(0,9):
+            if((col%3==0) and (col!=0)):
+                print('|',end='')
+            print('',puzzle[row][col],'',end='')
+        print()
+    print()
+    t1_stop = perf_counter()
+    print("Time: {}".format(t1_stop-t1_start))
 
 
 puzzle=[[5,3,0,0,7,0,0,0,0],
@@ -64,3 +81,4 @@ puzzle=[[5,3,0,0,7,0,0,0,0],
 solved=solve_sudoku(puzzle)
 for line in solved:
     print(line)
+print_sudoku(puzzle)
