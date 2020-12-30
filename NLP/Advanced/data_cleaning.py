@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import precision,recall_score
+from sklearn.metrics import precision_score,recall_score
 from sklearn.model_selection import train_test_split
 messages=pd.read_csv("data/spam.csv", encoding="latin-1")
 messages=messages.drop(labels=['Unnamed: 2','Unnamed: 3','Unnamed: 4'],axis=1)
@@ -25,3 +25,10 @@ X_train,X_test,y_train,y_test=train_test_split(X_features,messages['label'],test
 
 
 rf=RandomForestClassifier()
+rf_model=rf.fit(X_train,y_train)
+y_pred=rf_model.predict(X_test)
+#Evaluation
+
+precision=precision_score(y_test,y_pred,pos_label='spam')
+recall=recall_score(y_test,y_pred,pos_label='spam')
+print("precision {} recall {}".format(round(precision,3),round(recall,3))
