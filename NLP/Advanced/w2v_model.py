@@ -27,3 +27,14 @@ for v in X_test_vect:
         X_test_vect_avg.append(v.mean(axis=0))
     else:
         X_test_vect_avg.append(np.zeros(100,dtype=float))
+
+from sklearn.ensemble import RandomForestClassifier
+
+rf=RandomForestClassifier()
+rf_model=rf.fit(X_train_vect_avg,y_train.values.ravel())
+y_pred=rf_model.predict(X_test_vect_avg)
+
+from sklearn.metrics import precision_score,recall_score
+precision=precision_score(y_test,y_pred)
+recall=recall_score(y_test,y_pred)
+print("Precision: {}, Recall: {}, Accuracy:{} ".format(round(precision,3),round(recall,3), round((y_pred==y_test['label'].sum()/len(y_pred)),3))
