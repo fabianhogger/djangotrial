@@ -18,6 +18,11 @@ den eixe kampina den katafere na mpei se varka
 opote ftiaxno column me binary timi gia to an eixe kampina to atomo
 """
 titanc['Cabin_ind']=np.where(titanic['Cabin'].isnull(), 0,1)
+
+for i,col in enumerate(['Cabin_ind','Sex','Embarked']):
+    plt.figure(i)
+    sns.catplot(x=col,y='Survived',data=titanic,kind='point',aspect=2, )
+
 for i in ['Age','Fare']:
     died=list(titanic[titanic['Survived']==0][i].dropna())
     survived=list(titanic[titanic['Survived']==1][i].dropna())
