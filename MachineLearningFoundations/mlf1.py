@@ -27,3 +27,13 @@ for i in ['Age','Fare']:
 for i,col in enumerate(['Pclass','SibSp','Parch']):
     plt.figure(i)
     sns.catplot(x=col,y='Survived',data=titanic,kind='point',aspect=2, )
+
+titanic['family_cnt']=titanic['SibSp']+ titanic['Parch']
+#to remove model colinearity we remove SibSp and Parch
+titanic.drop(['SibSp','Parch'],axis=0,inplace=True)
+sns.catplot(x='family_cnt',y='Survived',data=titanic,kind='point',aspect=2,)
+
+
+titanic.drop('PassengerId',axis=1,inplace=True)
+#Next we replace the missing Age values with the average age
+titanic['Age'].fillna(titanic['Age'].mean(),inplace=True)
