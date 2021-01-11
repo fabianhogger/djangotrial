@@ -23,3 +23,7 @@ for i in ['Age','Fare']:
     plt.legend(['did not survive','Survived'])
     plt.title('Overlaid histogram for {}'.format(i))
     plt.show()
+
+for i,col in enumerate(['Pclass','SibSp','Parch']):
+    plt.figure(i)
+    sns.catplot(x=col,y='Survived',data=titanic,kind='point',aspect=2, )
