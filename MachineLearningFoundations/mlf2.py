@@ -22,7 +22,16 @@ titanc['Cabin_ind']=np.where(titanic['Cabin'].isnull(), 0,1)
 for i,col in enumerate(['Cabin_ind','Sex','Embarked']):
     plt.figure(i)
     sns.catplot(x=col,y='Survived',data=titanic,kind='point',aspect=2, )
+"""
+Vlepoyme mia diafora survival rate analoga me to meros epivivasis
+kai prospathoyme na to eksigisoume mipos afto proerxetai apo alloys logoys
+gia afto kanoyme pivot table gia na doume poses ginekes kai antres mpikan se kathe
+limani
 
+Meta kanoyme to idio kai gia posoys eixan kampines kai vlepoyme oti aftoi itan oi logoi
+tis proigoymenis periergis sisxetisis
+"""
+print(titanci.pivot_table('Survived',index='Sex',columns='Embarked',aggfunc='count'))
 for i in ['Age','Fare']:
     died=list(titanic[titanic['Survived']==0][i].dropna())
     survived=list(titanic[titanic['Survived']==1][i].dropna())
