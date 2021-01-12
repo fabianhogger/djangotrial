@@ -9,3 +9,13 @@ Variance refers to an algorithm's sensitivity to small fluctuations in the train
 High Variance is a result of the algorithm fitting to  random noise in the training data
 
 Overfitting occurs when an algorithm fits to closely to a limited set of data
+
+Hyperparameter tuning
+2 Primary ways to tune model for Optimal Complexity
+
+1. Hyperparameter tuning- choosing a set of optimal parameters
+for fitting an algorithm
+A model parameter is a configuration variable that is internal to the model and whose value
+can be estimated from data(by the algorithm)
+A model Hyperparameter is a configuration that is external to the model, whose value cannot be estimated
+by the data and whose value guides how the algorithm learns parameter values from the data
