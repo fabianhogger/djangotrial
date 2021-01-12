@@ -19,3 +19,8 @@ A model parameter is a configuration variable that is internal to the model and 
 can be estimated from data(by the algorithm)
 A model Hyperparameter is a configuration that is external to the model, whose value cannot be estimated
 by the data and whose value guides how the algorithm learns parameter values from the data
+
+2. Regularization - a technique used to reduce overfitting by discouraging
+  overly complex models in some way
+  Examples
+  
