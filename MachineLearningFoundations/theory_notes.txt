@@ -1,0 +1,5 @@
+Bias is the algorithms tendency to consistently learn the wrong thing by not taking
+into account all the information in the data
+High Bias is a result of the algorithm missing the relevant relations between features
+and target outputs
+Underfitting occurs when the algorithm misses to capture the underlying trend of the data
