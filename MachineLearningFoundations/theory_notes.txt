@@ -3,3 +3,9 @@ into account all the information in the data
 High Bias is a result of the algorithm missing the relevant relations between features
 and target outputs
 Underfitting occurs when the algorithm misses to capture the underlying trend of the data
+(That happens when a model that is too simple,with high bias and low variance)
+
+Variance refers to an algorithm's sensitivity to small fluctuations in the training set
+High Variance is a result of the algorithm fitting to  random noise in the training data
+
+Overfitting occurs when an algorithm fits to closely to a limited set of data
