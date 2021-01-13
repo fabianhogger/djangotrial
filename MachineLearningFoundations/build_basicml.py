@@ -13,9 +13,18 @@ def print_results(results):
     std=resutls.cv_results_['std_test_score']
     for mean,std,params in zip(means,stds,results.cv_results_['params']):
         print('{} (+/-{}) for {}'.format(round(mean,3),round(std*2,3),params))
-
+#GridSearch
 rf=RandomForestClassifier()
 parameters={'n_estimators': [5,50,100],'max_depth':[2,10,20,None]}
 cv=GridSearchCV(rf,parameters,cv=5)
 cv=cv.fit(tr_features,tr_labels.values.ravel())
 print_results(cv)
+
+#Evaluate  3 models
+rf1=RandomForestClassifier(n_estimators=5,max_depth=10)
+rf1=rf1.fit(tr_features,tr_labels.values.ravel())
+rf2=RandomForestClassifier(n_estimators=100,max_depth=10)
+rf2=rf2.fit(tr_features,tr_labels.values.ravel())
+
+rf3=RandomForestClassifier(n_estimators=100,max_depth=None)
+rf3=rf3.fit(tr_features,tr_labels.values.ravel())
