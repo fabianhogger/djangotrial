@@ -59,3 +59,9 @@ Evaluation should show whether the  model captures
 the right aspects compared to humans
 Also it will show what distance threshold is still being perceived as similar enough
 Use perplexity to see if your model is representative of the documents you're scoring it on
+
+
+https://www.analyticsvidhya.com/blog/2016/08/beginners-guide-to-topic-modeling-in-python/
+https://datascience.aero/topic-modelling/
+http://qpleple.com/perplexity-to-evaluate-topic-models/
+Latent Dirichlet Allocation (Part 2 of 2)
