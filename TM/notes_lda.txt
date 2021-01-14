@@ -1,0 +1,61 @@
+LDA
+Latent Dirichlet Allocation
+
+In vector space, any corpus (collection of documents) can be represented as a document-term matrix
+Document-Term Matrix
+
+   w1|w2|w3|w4|w5|..|wn
+D1 0  1  3  0  2
+D2 2  2  3  1  0
+D3 2  1  2  1  4
+D4 1  3  0  3  4
+..
+Dn
+LDA converts this Document-Term Matrix into 2 lower dimensional matrices
+M1-- document-topics matrix dimensions: (NxK)
+   k1|k2|k3|K
+D1  0  1  1
+D2  1  1  1
+D3  1  0  0
+Dn
+
+M2-- topic – terms matrix dimensions:(KxM)
+   w1|w2|w3|Wm
+k1 0  1  0 1
+k2 0  0  1 0
+k3 0  1  1 1
+K  1  1  1 1
+
+
+distance between propability distibuitions
+
+
+Preprocess
+Text corpus depends on the application domain!
+It should be contextualized since the window of context will determine
+what words are considered to be related.
+The only observable features of the model are words
+Experiment with various stoplists to make sure only the right ones
+are getting in.
+Good quality corpus is wikipedia
+
+Train
+The key parameter is the number of topics.
+Again depends on the domain
+Other parameters are alpha and beta
+You can live them aside to begin with and only tune later
+Good place to start is gensim
+
+Score
+The goal of the model is not to label documents
+but to give them an unique fingerprint so that
+they can be compared to others in a humanlike fashion
+
+Evaluate
+Evaluation depends on the application
+
+Use Jenshen-Shannon Distance as similarity metric
+Evaluation should show whether the  model captures
+the right aspects compared to humans
+Also it will show what distance threshold is still being perceived as similar enough
+Use perplexity to see if your model is representative of the documents you're scoring it on
