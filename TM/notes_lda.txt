@@ -64,4 +64,7 @@ Use perplexity to see if your model is representative of the documents you're sc
 https://www.analyticsvidhya.com/blog/2016/08/beginners-guide-to-topic-modeling-in-python/
 https://datascience.aero/topic-modelling/
 http://qpleple.com/perplexity-to-evaluate-topic-models/
-Latent Dirichlet Allocation (Part 2 of 2)
+Latent Dirichlet Allocation (Part 1 of 2) Lda mechanism
+uses 2 dirchlet distibutions one for the distance for documents from topics and one
+for distance between topics and words 
+Latent Dirichlet Allocation (Part 2 of 2) gibbs sampling/train
