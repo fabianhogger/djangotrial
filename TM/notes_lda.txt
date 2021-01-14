@@ -66,5 +66,6 @@ https://datascience.aero/topic-modelling/
 http://qpleple.com/perplexity-to-evaluate-topic-models/
 Latent Dirichlet Allocation (Part 1 of 2) Lda mechanism
 uses 2 dirchlet distibutions one for the distance for documents from topics and one
-for distance between topics and words 
+for distance between topics and words
 Latent Dirichlet Allocation (Part 2 of 2) gibbs sampling/train
+buy udemy course
