@@ -12,4 +12,12 @@ doc5 = "Health experts say that Sugar is not good for your lifestyle."
 doc_complete = [doc1, doc2, doc3, doc4, doc5]
 
 
-stop=set(nltk.corpus.stopwords)
+stop=set(stopwords.words('english'))
+exclude=set(string.punctuation)
+lemma=WordNetLemmatizer()
+def clean(doc):
+    stop_free = " ".join([i for i in doc.lower().split() if i not in stop])
+    punc_free = ''.join(ch for ch in stop_free if ch not in exclude)
+    normalized = " ".join(lemma.lemmatize(word) for word in punc_free.split())
+    return normalized
+doc_clean = [clean(doc).split() for doc in doc_complete]
