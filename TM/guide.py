@@ -33,7 +33,11 @@ import gensim
 from gensim import corpora
 #Creating the term dictionary of our courpus, where every unique term is assigned an index.
 dictionary = corpora.Dictionary(doc_clean)
-print(dictionary)
+print(dictionary.values())
+"""ValuesView(<gensim.corpora.dictionary.Dictionary object at 0x00000286394A6BC8>)
+[(0, '0.079*"driving" + 0.045*"suggest" + 0.045*"cause"'),
+ (1, '0.076*"sister" + 0.076*"father" + 0.076*"sugar"'),
+ (2, '0.076*"sugar" + 0.075*"lifestyle" + 0.075*"health"')]"""
 # Converting list of documents (corpus) into Document Term Matrix using dictionary prepared above.
 doc_term_matrix = [dictionary.doc2bow(doc) for doc in doc_clean]
 # Creating the object for LDA model using gensim library
