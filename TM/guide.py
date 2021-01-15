@@ -21,12 +21,19 @@ def clean(doc):
     normalized = " ".join(lemma.lemmatize(word) for word in punc_free.split())
     return normalized
 doc_clean = [clean(doc).split() for doc in doc_complete]
-
-
+print(doc_clean)
+"""
+[['sugar', 'bad', 'consume', 'sister', 'like', 'sugar', 'father'],
+['father', 'spends', 'lot', 'time', 'driving', 'sister', 'around', 'dance', 'practice'],
+['doctor', 'suggest', 'driving', 'may', 'cause', 'increased', 'stress', 'blood', 'pressure'],
+['sometimes','feel','pressure','perform','well','school','father','never','seems','drive','sister','better'],
+ ['health', 'expert', 'say', 'sugar', 'good', 'lifestyle']]
+"""
 import gensim
 from gensim import corpora
 #Creating the term dictionary of our courpus, where every unique term is assigned an index.
- dictionary = corpora.Dictionary(doc_clean)
+dictionary = corpora.Dictionary(doc_clean)
+print(dictionary)
 # Converting list of documents (corpus) into Document Term Matrix using dictionary prepared above.
 doc_term_matrix = [dictionary.doc2bow(doc) for doc in doc_clean]
 # Creating the object for LDA model using gensim library
@@ -37,5 +44,7 @@ ldamodel = Lda(doc_term_matrix, num_topics=3, id2word = dictionary, passes=50)
 
 print(ldamodel.print_topics(num_topics=3, num_words=3))
 """
-
+[(0, '0.045*"pressure" + 0.045*"father" + 0.045*"sister"'),
+(1, '0.029*"sugar" + 0.029*"sister" + 0.029*"father"'),
+ (2, '0.064*"sugar" + 0.064*"sister" + 0.064*"father"')]
 """
