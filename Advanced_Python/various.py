@@ -1,5 +1,6 @@
 from string import Template
 def main():
+    """
     b=bytes([0x41,0x42,0x43,0x44])
     print(b)
     s="This a string"
@@ -11,4 +12,8 @@ def main():
     #utf-32
     b3=s.encode('utf-32')
     print(b3)
+"""
+    templ=Template('You are watching ${title} by ${author}')
+    str2=templ.substitute(title="Matsamplokos",author="Fousekis")
+    print(str2)
 main()
