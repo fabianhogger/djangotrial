@@ -4,6 +4,7 @@ def main():
     #print(all(list1))
     ##############
     days=['Mon','Tues','Wed','Thur','Fri','Sat','San']
+    daysfr=['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']
     i=iter(days)
     print(next(i))
     print(next(i))
@@ -13,5 +14,7 @@ def main():
             print(line)
     for i,m in enumerate(days,start=1):
         print(i,m)
+    for m in zip(days,daysfr):
+        print(m)
 if __name__ == "__main__":
     main()
