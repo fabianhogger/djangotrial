@@ -16,4 +16,8 @@ def main():
     templ=Template('You are watching ${title} by ${author}')
     str2=templ.substitute(title="Matsamplokos",author="Fousekis")
     print(str2)
+    dict={"title":"re eisai trelos",
+    "author":"Giannakis"}
+    str3=templ.substitute(dict)
+    print(str3)
 main()
