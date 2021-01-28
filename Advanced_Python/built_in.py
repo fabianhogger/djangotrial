@@ -14,7 +14,11 @@ def main():
             print(line)
     for i,m in enumerate(days,start=1):
         print(i,m)
+    #   combine lists
     for m in zip(days,daysfr):
         print(m)
+    for i,m in enumerate(zip(days,daysfr),start=1):
+        print(i,m[0]," = ",m[1],"in French")
+    
 if __name__ == "__main__":
     main()
