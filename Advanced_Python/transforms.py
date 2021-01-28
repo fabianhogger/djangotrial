@@ -1,5 +1,5 @@
 # use transform functions like sorted, filter, map
-
+import itertools
 
 def filterFunc(x):
     if x%2==0:
@@ -40,16 +40,34 @@ def main():
 
     # TODO: use filter to remove items from a list
     odds=list(filter(filterFunc,nums))
-    print(odds)
+    #print(odds)
     # TODO: use filter on non-numeric sequence
     lowers=list(filter(filterFunc2,chars))
-    print(lowers)
+    #print(lowers)
     # TODO: use map to create a new sequence of values
     squares=list(map(squareFunc,nums))
-    print(squares)
+    #print(squares)
     # TODO: use sorted and map to change numbers to grades
     grades=sorted(grades)
     letters=list(map(toGrade,grades))
-    print(letters)
+    #print(letters)
+    #Cycle through values iterating
+    seq1=['John','Michael','Joe']
+    cycle=itertools.cycle(seq1)
+    print(next(cycle))
+    print(next(cycle))
+    print(next(cycle))
+    print(next(cycle))
+    #counter
+    count1=itertools.count(100,10)
+    print(next(count1))
+    print(next(count1))
+    print(next(count1))
+    #accumulator
+    vals=[10,20,30,40,50,40,30]
+    acc=itertools.accumulate(vals)
+    print(list(acc))
+    acc=itertools.accumulate(vals,max)
+    print(list(acc))
 if __name__ == "__main__":
     main()
