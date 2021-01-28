@@ -19,7 +19,17 @@ def squareFunc(x):
 
 
 def toGrade(x):
-    pass
+    if x>=90:
+        return 'A'
+    elif (x<90 and x>=80):
+        return 'B'
+    elif (x<80 and x>=70):
+        return 'C'
+    elif (x<70 and x>=60):
+        return 'D'
+    elif (x<60 and x>=50):
+        return 'E'
+    return 'F'
 
 
 def main():
@@ -38,7 +48,8 @@ def main():
     squares=list(map(squareFunc,nums))
     print(squares)
     # TODO: use sorted and map to change numbers to grades
-
-
+    grades=sorted(grades)
+    letters=list(map(toGrade,grades))
+    print(letters)
 if __name__ == "__main__":
     main()
