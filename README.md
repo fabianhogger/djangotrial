@@ -1,3 +1,3 @@
-# Django begginer project
+# Django   project
 
-and other stuff
+and ml stuff
